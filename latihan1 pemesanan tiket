@@ -1,23 +1,30 @@
-# Harga tiket
-harga_reguler = 50000
-harga_vip = 100000
-diskon_member = 0.2
+print("PROGRAM PEMESANAN TIKET BIOSKOP")
 
 # Input dari user
 tipe_tiket = input("Masukkan tipe tiket (reguler/vip): ").lower()
-status_member = input("Apakah Anda memiliki kartu member? (ya/tidak): ").lower()
+status_member = input("Apakah Anda memiliki kartu member? (y/t): ").lower()
 
-# Menentukan harga dasar berdasarkan tipe tiket
+# Menentukan harga tiket berdasarkan tipe
 if tipe_tiket == "reguler":
-    harga = harga_reguler
+    harga_tiket = 50000
 elif tipe_tiket == "vip":
-    harga = harga_vip
+    harga_tiket = 100000
 else:
-    print("Tipe tiket tidak valid.")
-    exit()
+    print("Tipe tiket tidak valid!")
+    harga_tiket = 0
 
-# Menghitung total harga dengan operator ternary
-total_harga = harga * (1 - diskon_member) if status_member == "ya" else harga
+# Menghitung diskon menggunakan operator ternary
+diskon = 0.2 if status_member == "y" else 0
 
-# Output
-print(f"Total harga yang harus dibayar: Rp{total_harga:,.0f}")
+# Menghitung total harga
+total_harga = harga_tiket - (harga_tiket * diskon)
+
+# Menampilkan hasil
+print("\n" + "="*50)
+print("DETAIL PEMESANAN")
+print("="*50)
+print(f"Tipe Tiket     : {tipe_tiket.capitalize()}")
+print(f"Harga Tiket    : Rp {harga_tiket:,}")
+print(f"Status Member  : {'Ya' if status_member == 'y' else 'Tidak'}")
+print(f"Diskon         : {int(diskon * 100)}%")
+print(f"Total Bayar    : Rp {int(total_harga):,}")
