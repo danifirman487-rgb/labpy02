@@ -1,0 +1,23 @@
+# Harga tiket
+harga_reguler = 50000
+harga_vip = 100000
+diskon_member = 0.2
+
+# Input dari user
+tipe_tiket = input("Masukkan tipe tiket (reguler/vip): ").lower()
+status_member = input("Apakah Anda memiliki kartu member? (ya/tidak): ").lower()
+
+# Menentukan harga dasar berdasarkan tipe tiket
+if tipe_tiket == "reguler":
+    harga = harga_reguler
+elif tipe_tiket == "vip":
+    harga = harga_vip
+else:
+    print("Tipe tiket tidak valid.")
+    exit()
+
+# Menghitung total harga dengan operator ternary
+total_harga = harga * (1 - diskon_member) if status_member == "ya" else harga
+
+# Output
+print(f"Total harga yang harus dibayar: Rp{total_harga:,.0f}")
